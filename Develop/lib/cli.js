@@ -5,7 +5,6 @@ const { writeFile } = require("fs/promises");
 
 class CLI {
   async run() {
-    // Use inquirer to get user input
     const userData = await inquirer.prompt([
       {
         type: "input",
@@ -31,7 +30,32 @@ class CLI {
       },
     ]);
 
-  
+    let shape;
+    switch (userData.shapeType) {
+      case "circle":
+        shape = new Circle();
+        break;
+      case "triangle":
+        shape = new Triangle();
+        break;
+      case "square":
+        shape = new Square();
+        break;
+      default:
+        throw new Error("Invalid shape type");
+    }
+
+    shape.setColor(userData.shapeColor);
+    shape.setText(userData.text, userData.textColor);
+
+    console.log("Shape Object:", shape);
+    
+    const svgString = SVG.render(shape);
+
+
+    await writeFile("logo.svg", svgString);
+
+    console.log("Generated logo.svg");
   }
 }
 
