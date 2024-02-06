@@ -2,6 +2,7 @@ class Shape {
   constructor() {
     this.text = "";
     this.textColor = "";
+    this.shapeColor = "";
   }
 
   setColor(color) {
@@ -17,6 +18,7 @@ class Shape {
     return {
       text: this.text,
       textColor: this.textColor,
+      shapeColor: this.shapeColor,
     };
   }
 }

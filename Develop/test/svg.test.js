@@ -1,5 +1,6 @@
-const SVG = require("./svg");
-const { Square } = require("./shapes");
+const SVG = require("../lib/svg");
+const { Square } = require("../lib/shapes");
+
 
 describe("SVG", () => {
   it("should render a 300 x 200 svg element", () => {
